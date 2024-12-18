@@ -9,26 +9,40 @@ services:
     depends_on:
       - auth
       - chat
+    networks:
+      - app-network
 
   auth:
     build:
-      context: ./services/auth
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: auth
+        PORT: 5001
     ports:
       - "5001:5001"
     environment:
       - MONGO_URL=mongodb://mongo:27017/nodechat-app
     depends_on:
       - mongo
+    networks:
+      - app-network
 
   chat:
     build:
-      context: ./services/chat
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: chat
+        PORT: 5002
     ports:
       - "5002:5002"
     environment:
       - MONGO_URL=mongodb://mongo:27017/nodechat-app
     depends_on:
       - mongo
+    networks:
+      - app-network
 
   mongo:
     image: mongo:latest
@@ -36,6 +50,12 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    networks:
+      - app-network
 
 volumes:
   mongo-data:
+
+networks:
+  app-network:
+    driver: bridge

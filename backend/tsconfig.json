@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./src",
+      "target": "es2022",
+      "module": "es2022",
+      "moduleResolution": "bundler",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "noEmit": true,
+      "paths": {
+        "auth/*": ["services/auth/*"],
+        "chat/*": ["services/chat/*"],
+        "db/*": ["lib/db/*"],
+      }
+    },
+    "include": ["src/lib/**/*", "src/services/**/*"],
+    "exclude": ["node_modules"]
+  }
+  
