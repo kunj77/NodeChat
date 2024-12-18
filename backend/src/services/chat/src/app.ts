@@ -3,10 +3,10 @@ import http from 'http';
 import { Server, Socket } from 'socket.io';
 import setChatRoutes from './routes';
 import cors from 'cors';
-import connectDB from '../../db';
+import connectDB from 'db/index';
 
 const app = express();
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'http://localhost:3000', methods: ['GET', 'POST'], credentials: true }));
 app.use(express.json());
 
 setChatRoutes(app);

@@ -19,14 +19,13 @@ services:
       args:
         SERVICE_NAME: auth
         PORT: 5001
+    network_mode: host
     ports:
       - "5001:5001"
     environment:
-      - MONGO_URL=mongodb://mongo:27017/nodechat-app
+      - MONGO_URL=mongodb://localhost:27017/nodechat-app
     depends_on:
       - mongo
-    networks:
-      - app-network
 
   chat:
     build:
@@ -35,14 +34,13 @@ services:
       args:
         SERVICE_NAME: chat
         PORT: 5002
+    network_mode: host
     ports:
       - "5002:5002"
     environment:
-      - MONGO_URL=mongodb://mongo:27017/nodechat-app
+      - MONGO_URL=mongodb://localhost:27017/nodechat-app
     depends_on:
       - mongo
-    networks:
-      - app-network
 
   mongo:
     image: mongo:latest
