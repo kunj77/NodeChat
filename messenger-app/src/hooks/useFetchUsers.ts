@@ -1,16 +1,15 @@
-import { create } from 'zustand';
-import chatService from '../services/chat';
-import { AxiosError } from 'axios';
-import { getErrorMessage } from '../helpers/error';
-import { User } from '../types';
-
+import { create } from "zustand";
+import chatService from "../services/chat";
+import { AxiosError } from "axios";
+import { getErrorMessage } from "../helpers/error";
+import { User } from "../types";
 
 interface UserListState {
-    loading: boolean;
-    success: boolean;
-    error: string | null;
-    getAll: () => Promise<User[]>;
-  }
+  loading: boolean;
+  success: boolean;
+  error: string | null;
+  getAll: () => Promise<User[]>;
+}
 
 const useFetchUsers = create<UserListState>((set) => {
   return {
@@ -20,7 +19,7 @@ const useFetchUsers = create<UserListState>((set) => {
     getAll: async () => {
       set({ loading: true, error: null });
       try {
-        const response = await chatService.get('/chat/users');
+        const response = await chatService.get("/chat/users");
         set({ loading: false, success: true });
         return response.data;
       } catch (error: unknown) {

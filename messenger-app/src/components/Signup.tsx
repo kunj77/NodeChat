@@ -18,7 +18,7 @@ const defaultState = {
   username: "",
   password: "",
   confirmPassword: "",
-}
+};
 const SignUp = () => {
   const [inputs, setInputs] = useState(defaultState);
 
@@ -28,7 +28,9 @@ const SignUp = () => {
 
   useEffect(() => {
     if (success) {
-      toast.success("User registered, you will be redirected to login page shortly");
+      toast.success(
+        "User registered, you will be redirected to login page shortly"
+      );
       setTimeout(() => {
         setInputs(defaultState);
         navigate("/login");
@@ -82,8 +84,8 @@ const SignUp = () => {
             error={inputs.password.length > 0 && inputs.password.length < 6}
             helperText={
               inputs.password.length > 0 && inputs.password.length < 6
-          ? "Password must be at least 6 characters"
-          : ""
+                ? "Password must be at least 6 characters"
+                : ""
             }
           />
           <TextField
@@ -115,20 +117,23 @@ const SignUp = () => {
           </Box>
         </form>
         <ToastContainer
-position="top-right"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick={false}
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="light"
-transition={Bounce}
-/>
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Bounce}
+        />
         <Box mt={2}>
-          <Link to="/login" style={{ textDecoration: "none", color: "#1976d2" }}>
+          <Link
+            to="/login"
+            style={{ textDecoration: "none", color: "#1976d2" }}
+          >
             Already have an account?
           </Link>
         </Box>

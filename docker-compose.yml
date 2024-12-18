@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   frontend:
@@ -20,6 +20,8 @@ services:
         PORT: 5001
     ports:
       - "5001:5001"
+    environment:
+      - MONGO_URL=mongodb://host.docker.internal:27017/webapp
     depends_on:
       - mongo
     network_mode: host
@@ -33,6 +35,8 @@ services:
         PORT: 5002
     ports:
       - "5002:5002"
+    environment:
+      - MONGO_URL=mongodb://host.docker.internal:27017/webapp
     depends_on:
       - mongo
     networks:

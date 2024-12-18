@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useLogin from "../hooks/useLogin";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -14,23 +14,23 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const { loading, login, error, success } = useLogin();
 
-    const navigate = useNavigate();
-  
-    useEffect(() => {
-      if (success) {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (success) {
       setUsername("");
       setPassword("");
       navigate("/chat");
-      }
-    }, [success, navigate]);
+    }
+  }, [success, navigate]);
 
-    useEffect(() => {
-      if (success) {
-        setUsername("");
-        setPassword("");
-        navigate("/chat");
-      }
-    }, [success, navigate, username]);
+  useEffect(() => {
+    if (success) {
+      setUsername("");
+      setPassword("");
+      navigate("/chat");
+    }
+  }, [success, navigate, username]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -85,7 +85,10 @@ const Login = () => {
           </Box>
         </form>
         <Box mt={2}>
-          <Link to="/signup" style={{ textDecoration: "none", color: "#1976d2" }}>
+          <Link
+            to="/signup"
+            style={{ textDecoration: "none", color: "#1976d2" }}
+          >
             Don't have an account?
           </Link>
         </Box>

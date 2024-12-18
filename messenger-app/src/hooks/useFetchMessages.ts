@@ -1,15 +1,15 @@
-import { create } from 'zustand';
-import chatService from '../services/chat';
-import { AxiosError } from 'axios';
-import { getErrorMessage } from '../helpers/error';
-import { Message } from '../types';
+import { create } from "zustand";
+import chatService from "../services/chat";
+import { AxiosError } from "axios";
+import { getErrorMessage } from "../helpers/error";
+import { Message } from "../types";
 
 interface UserMessageListState {
-    loading: boolean;
-    success: boolean;
-    error: string | null;
-    getAll: (sender: string, receiver: string) => Promise<Message[]>;
-  }
+  loading: boolean;
+  success: boolean;
+  error: string | null;
+  getAll: (sender: string, receiver: string) => Promise<Message[]>;
+}
 
 const useFetchMessages = create<UserMessageListState>((set) => {
   return {
@@ -19,7 +19,9 @@ const useFetchMessages = create<UserMessageListState>((set) => {
     getAll: async (sender: string, receiver: string) => {
       set({ loading: true, error: null });
       try {
-        const response = await chatService.get(`/chat/messages?sender=${sender}&receiver=${receiver}`);
+        const response = await chatService.get(
+          `/chat/messages?sender=${sender}&receiver=${receiver}`
+        );
         set({ loading: false, success: true });
         return response.data;
       } catch (error: unknown) {
