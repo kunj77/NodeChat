@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import setAuthRoutes from './routes';
-import connectDB from '../../db';
+import connectDB from 'db/index';
 
 const PORT = 5001;
 

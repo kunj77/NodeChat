@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import User, { IUser } from '../../../db/models/User';
+import User, { IUser } from 'db/models/User';
 import jwt from 'jsonwebtoken';
 
 // This would ideally come from a vault 
