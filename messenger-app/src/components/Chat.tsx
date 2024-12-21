@@ -51,7 +51,9 @@ const ChatView = () => {
       console.log("Message received in component:", newMessage);
       try {
         const parsedMessage = JSON.parse(newMessage);
-        if (parsedMessage.sender && parsedMessage.message) {
+        const { sender, receiver, message } = parsedMessage;
+        const isMessageForCurrentUser = receiver === loggedInUser?.username || sender === loggedInUser?.username; 
+        if (isMessageForCurrentUser && message) {
           setMessages((prevMessages) => [...prevMessages, parsedMessage]);
         }
       } catch (error) {
