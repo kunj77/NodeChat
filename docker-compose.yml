@@ -9,7 +9,8 @@ services:
     depends_on:
       - auth
       - chat
-    network_mode: host
+    networks:
+      - app-network
 
   auth:
     build:
@@ -21,10 +22,11 @@ services:
     ports:
       - "5001:5001"
     environment:
-      - MONGO_URL=mongodb://host.docker.internal:27017/webapp
+      - MONGO_URL=mongodb://host.docker.internal:27017/nodechat-app
     depends_on:
       - mongo
-    network_mode: host
+    networks:
+      - app-network
 
   chat:
     build:
@@ -36,7 +38,7 @@ services:
     ports:
       - "5002:5002"
     environment:
-      - MONGO_URL=mongodb://host.docker.internal:27017/webapp
+      - MONGO_URL=mongodb://host.docker.internal:27017/nodechat-app
     depends_on:
       - mongo
     networks:

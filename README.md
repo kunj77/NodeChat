@@ -81,21 +81,21 @@ Ensure you have MongoDB installed and running on your machine. The default conne
 1. Start the authentication service:
 
 ```sh
-cd services/auth
-npm run dev
+cd backend
+npx tsx src/services/auth/app.ts
 ```
 
 2. Start the chat service:
 
 ```sh
-cd ../chat
-npm run dev
+cd backend
+npx tsx src/services/chat/app.ts
 ```
 
 3. Start the frontend:
 
 ```sh
-cd ../../messenger-app
+cd messenger-app
 npm start
 ```
 
@@ -126,7 +126,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the app in the brows
 
 - `message`: Handle incoming messages
 - `drain`: Handle backpressure
-- `close`: Handle WebSocket disconnection
+- `disconnect`: Handle WebSocket disconnection
 
 ## Technologies Used
 

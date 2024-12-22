@@ -66,7 +66,7 @@ const ChatView = () => {
     return () => {
       eventEmitter.removeListener("newMessage", messageHandler);
     };
-  }, [getAll]);
+  }, [getAll, loggedInUser?.username]);
 
   useEffect(() => {
     const fetchMessages = async () => {
