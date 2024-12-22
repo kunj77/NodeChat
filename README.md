@@ -125,7 +125,6 @@ Open [http://localhost:3000](http://localhost:3000) to view the app in the brows
 ### Server-Side
 
 - `message`: Handle incoming messages
-- `drain`: Handle backpressure
 - `disconnect`: Handle WebSocket disconnection
 
 ## Technologies Used
